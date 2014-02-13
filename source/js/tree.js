@@ -5,6 +5,7 @@ var Tree = function(elem) {
     // Classes
     // 
     // 
+    
     var treeCreate = new TreeCreate;
     var treeEvents = new TreeEvents;
 
@@ -16,7 +17,6 @@ var Tree = function(elem) {
 
     var element = document.getElementById(elem);
     var object = {};
-
     var dimensionElement = {};
 
     // 
@@ -29,7 +29,6 @@ var Tree = function(elem) {
     var icon;
     var colapse;
     var check;
-
 
     //	
     //	
@@ -67,22 +66,27 @@ var Tree = function(elem) {
     var getColapse = function() {
         return colapse;
     };
-    
-    var setCheck = function (val) {
+
+    var setCheck = function(val) {
         check = val;
         return;
     };
-    
-    var getCheck = function () {
+
+    var getCheck = function() {
         return check;
     };
 
     //	
     //	
     //	Inicialização do treeview
-    //	
-    //	
-
+    //
+    //    	
+    
+    /**
+     * Função que inicia os processos do plugin
+     * @param  {Object} json
+     * @return {void}
+     */
     var init = function(json) {
         object = json;
 
@@ -90,7 +94,10 @@ var Tree = function(elem) {
         return;
     };
 
-
+    /**
+     * Bootstrap do plugin
+     * @return {void}
+     */
     var start = function() {
         element.className = 'mw-flextreeview';
 
@@ -115,7 +122,11 @@ var Tree = function(elem) {
     //	Regras
     //
     //
-
+    
+    /**
+     * Função que inicializa os modulos ou classes para haver um trabalho em conjunto dos elementos
+     * @return {[type]} [description]
+     */
     var initModules = function() {
         treeCreate.init(retorno);
         treeEvents.init(retorno);
@@ -127,6 +138,10 @@ var Tree = function(elem) {
     //	
     //	
 
+    /**
+     * Função que cria o cabeçalho da tree View
+     * @return {DON|Element}
+     */
     var createTitle = function() {
         var div = create('div');
         div.className = 'mw-title';
@@ -149,6 +164,10 @@ var Tree = function(elem) {
         return div;
     };
 
+    /**
+     * Função que cria arvore da tree
+     * @return {DON|Element}
+     */
     var createContent = function() {
         var div = create('div');
         div.className = 'mw-tree-view';
@@ -157,19 +176,46 @@ var Tree = function(elem) {
         return div;
     };
 
+    /**
+     * Função que cria elementos na DON
+     * @param  {string} don
+     * @return {DON|Element}
+     */
     var create = function(don) {
         return document.createElement(don);
     };
 
+    /**
+     * Função que funciona como um seletor de elementos do document
+     * @param  {string} don
+     * @return {DON|Element}
+     */
     var selector = function(don) {
-        return document.querySelectorAll(don)[0];
+        var resp = document.querySelectorAll(don);
+
+        if (resp.length > 1)
+            return resp[0];
+        else
+            return resp;
     };
 
+    /**
+     * Função que adiciona classes
+     * @param {string} classe
+     * @param {DON|Elemento} element
+     * @return {DON|Element}
+     */
     var addClass = function(classe, element) {
         if (element)
             return element.className += classe;
     };
 
+    /**
+     * Função que remove as classes do elemento solicitado
+     * @param  {string} classe
+     * @param  {[type]} element [description]
+     * @return {[type]}         [description]
+     */
     var removeClass = function(classe, element) {
         if (element)
             return element.className = element.className.replace(classe, "");
@@ -210,7 +256,8 @@ var Tree = function(elem) {
         addClass: addClass,
         removeClass: removeClass,
         replaceClass: replaceClass,
-        element: element
+        element: element,
+        setMonitorEvent: treeEvents.setMonitorEvents
     };
 
     return retorno;

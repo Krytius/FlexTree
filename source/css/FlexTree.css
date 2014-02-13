@@ -40,12 +40,17 @@
     float: right;
 }
 
+.mw-topic:hover {
+    background-color: #F7F7F7;
+    font-weight: bold;
+}
+
 .mw-topic .mw-title-tree {
     font-family: Verdana;
     font-size: 11px;
     height: 20px;
     line-height: 20px;
-    float: left;
+    float: right;
     cursor: default;
 }
 
@@ -55,7 +60,7 @@
     background-position: center;
     width: 15px;
     height: 20px;
-    float: left;
+    float: right;
     margin-right: 5px;
 }
 
@@ -65,7 +70,7 @@
     background-position: center;
     width: 15px;
     height: 20px;
-    float: left;
+    float: right;
     margin-right: 5px;
 }
 
@@ -75,7 +80,7 @@
     background-position: center;
     width: 15px;
     height: 20px;
-    float: left;
+    float: right;
     margin-right: 5px;
 }
 
@@ -85,7 +90,7 @@
     background-position: center;
     width: 14px;
     height: 20px;
-    float: left;
+    float: right;
     margin-right: 6px;
 }
 

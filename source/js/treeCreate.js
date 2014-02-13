@@ -59,6 +59,36 @@ var TreeCreate = function() {
         }
 
     };
+    
+    /**
+     * Função que Retorna Arvores posterior ao id informado
+     * @param {Object} obj
+     * @param {integer} id
+     * @return {Object}
+     */
+    var returnTreeDown = function(obj, id) {
+        var quant = obj.length;
+
+        for (var i = 0; i < quant; i++) {
+            if (obj[i].id === id) {
+                if (obj[i].filho) {
+                    return obj[i].filho;
+                }
+            }
+        }
+
+        var resp;
+        for (var i = 0; i < quant; i++) {
+            var child = (obj[i].filho) ? 1 : 0;
+            if (child) {
+                resp = returnTreeDown(obj[i].filho, id);
+            }
+
+            if (resp)
+                return resp;
+        }
+
+    };
 
     //
     //
@@ -70,6 +100,7 @@ var TreeCreate = function() {
         var quant = obj.length;
 
         var div = object.create('div');
+        div.setAttribute('id', 'mw-content-tree');
 
         for (var i = 0; i < quant; i++) {
 
@@ -86,6 +117,26 @@ var TreeCreate = function() {
                 ele.onclick = object.treeEvents.openCloseGroup;
             }
 
+            // Titulo
+            var text = object.create('div');
+            text.className = 'mw-title-tree';
+            text.innerHTML = obj[i].nome;
+            text.style.width = calculoRecuoTitle(ele) + 'px';
+            text.onclick = object.treeEvents.eventsTitle;
+
+            ele.appendChild(text);
+
+            // CheckBox
+            if (object.getCheck()) {
+                var check = object.create('div');
+                check.className = (obj[i].check) ? "checkActive" : "checkInative";
+                check.setAttribute('id', 'mw-check');
+
+                check.onclick = object.treeEvents.markDesmarkCheck;
+
+                ele.appendChild(check);
+            }
+
             // Seta
             if (child) {
                 var icon = createArrow();
@@ -96,25 +147,6 @@ var TreeCreate = function() {
 
                 ele.appendChild(icon);
             }
-
-            // CheckBox
-            if (object.getCheck()) {
-                var check = object.create('div');
-                check.className = (obj[i].check) ? "checkActive" : "checkInative";
-
-                check.onclick = object.treeEvents.markDesmarkCheck;
-
-                ele.appendChild(check);
-            }
-
-            // Titulo
-            var text = object.create('div');
-            text.className = 'mw-title-tree';
-            text.innerHTML = obj[i].nome;
-            text.style.width = calculoRecuoTitle(ele) + 'px';
-            text.onclick = object.treeEvents.eventsTitle;
-
-            ele.appendChild(text);
 
             // Titulo Colocado
             div.appendChild(ele);
@@ -166,7 +198,8 @@ var TreeCreate = function() {
     //
     var retorno = {
         init: init,
-        createTree: createTree
+        createTree: createTree,
+        returnTreeDown: returnTreeDown
     };
 
     return retorno;

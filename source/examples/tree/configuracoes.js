@@ -5,6 +5,9 @@ window.onload = function() {
     tree.setIcon('img/produtos.png');
     tree.setColapse(true);
     tree.setCheck(true);
+    tree.setMonitorEvent("OnCheck", function(id, check, obj) {
+        console.log(id, check, obj);
+    });
     tree.init(js);
     
     console.log(tree);
