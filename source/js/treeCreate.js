@@ -14,7 +14,12 @@ var TreeCreate = function() {
     //	Inicialização do modulo
     //
     //
-
+    
+    /**
+     * Função que inicializa classe
+     * @param  {Object} objeto
+     * @return {void}
+     */
     var init = function(objeto) {
         object = objeto;
         return;
@@ -95,7 +100,12 @@ var TreeCreate = function() {
     //  Manipulação de DON
     //
     //
-
+    
+    /**
+     * Método que cria a estrutura da tree view
+     * @param  {object}     obj
+     * @return {void}
+     */
     var createTree = function(obj) {
         var quant = obj.length;
 
@@ -174,6 +184,10 @@ var TreeCreate = function() {
         return div;
     };
 
+    /**
+     * Função que cria os elementos que tem arvore
+     * @return {DON|Element}
+     */
     var createArrow = function() {
         var div = object.create('i');
         div.className = 'arrowInactive';
@@ -181,11 +195,21 @@ var TreeCreate = function() {
         return div;
     };
 
+    /**
+     * Método que calcula o recuo da div topic
+     * @param  {integer} posicao
+     * @return {integer}         
+     */
     var calculoRecuoDiv = function(posicao) {
         var width = object.element.offsetWidth - (((posicao) ? posicao : 0) * 20);
         return width;
     };
 
+    /**
+     * Função que calcula o tamanho que o titulo pode ter
+     * @param  {DON}        element
+     * @return {integer}    
+     */
     var calculoRecuoTitle = function(element) {
         var width = parseInt(element.style.width) - (((!object.getCheck()) ? 25 : 40));
         return width;

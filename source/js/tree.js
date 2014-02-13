@@ -125,7 +125,7 @@ var Tree = function(elem) {
     
     /**
      * Função que inicializa os modulos ou classes para haver um trabalho em conjunto dos elementos
-     * @return {[type]} [description]
+     * @return {void}
      */
     var initModules = function() {
         treeCreate.init(retorno);
@@ -178,7 +178,7 @@ var Tree = function(elem) {
 
     /**
      * Função que cria elementos na DON
-     * @param  {string} don
+     * @param  {string}     don
      * @return {DON|Element}
      */
     var create = function(don) {
@@ -187,7 +187,7 @@ var Tree = function(elem) {
 
     /**
      * Função que funciona como um seletor de elementos do document
-     * @param  {string} don
+     * @param  {string}     don
      * @return {DON|Element}
      */
     var selector = function(don) {
@@ -201,29 +201,36 @@ var Tree = function(elem) {
 
     /**
      * Função que adiciona classes
-     * @param {string} classe
-     * @param {DON|Elemento} element
+     * @param {string}          classe
+     * @param {DON|Elemento}    element
      * @return {DON|Element}
      */
     var addClass = function(classe, element) {
         if (element)
-            return element.className += classe;
+            element.className += classe;
     };
 
     /**
      * Função que remove as classes do elemento solicitado
-     * @param  {string} classe
-     * @param  {[type]} element [description]
-     * @return {[type]}         [description]
+     * @param  {string}     classe
+     * @param  {DON}        element 
+     * @return {void}         
      */
     var removeClass = function(classe, element) {
         if (element)
-            return element.className = element.className.replace(classe, "");
+            element.className = element.className.replace(classe, "");
     };
 
+    /**
+     * Função que troca classe uma pela outra
+     * @param  {string}     next    
+     * @param  {string}     prev    
+     * @param  {DON}        element
+     * @return {void}          
+     */
     var replaceClass = function(next, prev, element) {
         if (element)
-            return element.className = element.className.replace(next, prev);
+            element.className = element.className.replace(next, prev);
     };
 
     //	

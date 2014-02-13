@@ -77,7 +77,10 @@ var TreeEvents = function() {
         }
     };
 
-
+    /**
+     * Método que marca e desmarca o elemento
+     * @return {void}
+     */
     var markDesmarkCheck = function() {
         var ele;
 
@@ -89,6 +92,10 @@ var TreeEvents = function() {
         check(ele);
     };
 
+    /**
+     * Função que da eventos ao titulo
+     * @return {void}
+     */
     var eventsTitle = function() {
         var id = this.parentNode.getAttribute('data-id');
         if (object.getCheck()) {
@@ -96,6 +103,11 @@ var TreeEvents = function() {
         }
     };
 
+    /**
+     * Função que executa o checked solitário ou do grupo inteiro
+     * @param  {DON}        ele
+     * @return {void}
+     */
     var check = function(ele) {
         var grupo = ele.parentNode.getAttribute('data-id');
         var mark = false;
@@ -117,6 +129,12 @@ var TreeEvents = function() {
         }
     };
 
+    /**
+     * Função que selected o grupo todo da treeView
+     * @param  {Object} tree
+     * @param  {Bollean} mark
+     * @return {void}
+     */
     var checkUncheckGroup = function(tree, mark) {
         var quant = tree.length;
 
@@ -138,6 +156,11 @@ var TreeEvents = function() {
         }
     };
     
+    /**
+     * Função que remove os ids da variavel de controle de itens marcados
+     * @param  {integer} id
+     * @return {void}
+     */
     var removeSelectCheck = function(id) {
         if(!(checksSelect.length > 0))
             return;
@@ -148,6 +171,11 @@ var TreeEvents = function() {
         onCheckEvent(id, false, checksSelect);
     };
     
+    /**
+     * Função que adiciona os ids na variavel de controle de itens marcados
+     * @param {integer} id
+     * @return {void}
+     */
     var addSelectCheck = function(id) {
         checksSelect.push(id);
         
@@ -160,6 +188,11 @@ var TreeEvents = function() {
     //
     //
     
+    /**
+     * Função de callback para o usuário para customização da ação
+     * @param {string}   evento 
+     * @param {Function} callback
+     */
     var setMonitorEvents = function(evento, callback) {
         switch(evento) {
             case "OnCheck":
