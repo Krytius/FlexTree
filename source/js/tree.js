@@ -5,7 +5,7 @@ var Tree = function(elem) {
     // Classes
     // 
     // 
-    
+
     var treeCreate = new TreeCreate;
     var treeEvents = new TreeEvents;
 
@@ -29,6 +29,7 @@ var Tree = function(elem) {
     var icon;
     var colapse;
     var check;
+    var button;
 
     //	
     //	
@@ -76,12 +77,21 @@ var Tree = function(elem) {
         return check;
     };
 
+    var setButons = function(val) {
+        button = val;
+        return;
+    };
+
+    var getButons = function(val) {
+        return button;
+    };
+
     //	
     //	
     //	Inicialização do treeview
     //
     //    	
-    
+
     /**
      * Função que inicia os processos do plugin
      * @param  {Object} json
@@ -115,6 +125,12 @@ var Tree = function(elem) {
 
         var documentContent = createContent();
         element.appendChild(documentContent);
+
+        if (button) {
+            var documentButton = createButton();
+            element.appendChild(documentButton);
+        }
+
     };
 
     //
@@ -122,7 +138,7 @@ var Tree = function(elem) {
     //	Regras
     //
     //
-    
+
     /**
      * Função que inicializa os modulos ou classes para haver um trabalho em conjunto dos elementos
      * @return {void}
@@ -171,8 +187,26 @@ var Tree = function(elem) {
     var createContent = function() {
         var div = create('div');
         div.className = 'mw-tree-view';
+        div.style.height = treeCreate.calculoElementos() + 'px';
         var elementTree = treeCreate.createTree(object);
         div.appendChild(elementTree);
+        return div;
+    };
+
+    /**
+     * Função que cria o botões da tree view
+     * @return {DON|Element}
+     */
+    var createButton = function() {
+        var div = create('div');
+        div.className = "mw-tree-buttons";
+        var quant = button.length;
+
+        for (var i = quant - 1; i >= 0; i--) {
+            var elementButton = treeCreate.createButton(button[i]);
+            div.appendChild(elementButton);
+        }
+
         return div;
     };
 
@@ -193,7 +227,7 @@ var Tree = function(elem) {
     var selector = function(don) {
         var resp = document.querySelectorAll(don);
 
-        if (resp.length > 1)
+        if (resp.length < 2)
             return resp[0];
         else
             return resp;
@@ -257,6 +291,8 @@ var Tree = function(elem) {
         getColapse: getColapse,
         setCheck: setCheck,
         getCheck: getCheck,
+        setButtons: setButons,
+        getButtons: getButons,
         // Manipuladores de DON
         create: create,
         selector: selector,

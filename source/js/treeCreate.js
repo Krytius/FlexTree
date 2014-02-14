@@ -14,7 +14,7 @@ var TreeCreate = function() {
     //	Inicialização do modulo
     //
     //
-    
+
     /**
      * Função que inicializa classe
      * @param  {Object} objeto
@@ -64,7 +64,7 @@ var TreeCreate = function() {
         }
 
     };
-    
+
     /**
      * Função que Retorna Arvores posterior ao id informado
      * @param {Object} obj
@@ -94,13 +94,42 @@ var TreeCreate = function() {
         }
 
     };
+    
+    /**
+     * Função que retorna o pai do id informado
+     * @param {Object} obj
+     * @param {id} id
+     * @return {Object}
+     */
+    var returnTreeUp = function(obj, id) {
+        var quant = obj.length;
+
+        for (var i = 0; i < quant; i++) {
+            if (obj[i].id === id) {
+                if (obj[i].filho) {
+                    return obj[i];
+                }
+            }
+        }
+
+        var resp;
+        for (var i = 0; i < quant; i++) {
+            var child = (obj[i].filho) ? 1 : 0;
+            if (child) {
+                resp = returnTreeUp(obj[i].filho, id);
+            }
+
+            if (resp)
+                return resp;
+        }
+    };
 
     //
     //
     //  Manipulação de DON
     //
     //
-    
+
     /**
      * Método que cria a estrutura da tree view
      * @param  {object}     obj
@@ -190,7 +219,31 @@ var TreeCreate = function() {
      */
     var createArrow = function() {
         var div = object.create('i');
-        div.className = 'arrowInactive';
+        div.className = (object.getColapse()) ? 'arrowActive' : 'arrowInactive';
+        return div;
+    };
+    
+    /**
+     * Função que cria botões do tree
+     * @param {Object} obj
+     * @return {DON|Element}
+     */
+    var createButton = function(obj) {
+        var div = object.create('div');
+        div.className = "mw-button-custom";
+        div.style.width = calculaEspacoButton() + 'px';
+
+        var text = object.create('div');
+        text.innerHTML = obj.name;
+        text.style.backgroundImage = 'url(' + obj.icon + ')';
+        text.className = "mw-text-button";
+        text.style.width = (calculaEspacoButton() - 20) + "px";
+
+        div.appendChild(text);
+
+        div.onclick = function() {
+            object.treeEvents.eventButton(this, obj.eventReturn, obj.callback);
+        };
 
         return div;
     };
@@ -214,6 +267,32 @@ var TreeCreate = function() {
         var width = parseInt(element.style.width) - (((!object.getCheck()) ? 25 : 40));
         return width;
     };
+    
+    /**
+     * Função que calcula o tamanho máximo de onde vai ser colocado o conteudo da tree
+     * @return {integer}
+     */
+    var calculoElementos = function() {
+        var title = (object.getTitle()) ? 28 : 0;
+        var button = (object.getButtons()) ? 35 : 0;
+        var content = object.element.offsetHeight - title - button;
+        return content;
+    };
+    
+    /**
+     * Calcula tamanho máximo do botão
+     * @return {integer}
+     */
+    var calculaEspacoButton = function() {
+        var tamanho = object.element.offsetWidth;
+        var content = tamanho / object.getButtons().length;
+        var tamanhoMaximo = tamanho * 0.20;
+
+        if (content > tamanhoMaximo)
+            content = tamanhoMaximo;
+
+        return content;
+    };
 
     //
     //
@@ -223,7 +302,10 @@ var TreeCreate = function() {
     var retorno = {
         init: init,
         createTree: createTree,
-        returnTreeDown: returnTreeDown
+        returnTreeDown: returnTreeDown,
+        returnTreeUp: returnTreeUp,
+        createButton: createButton,
+        calculoElementos: calculoElementos
     };
 
     return retorno;

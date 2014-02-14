@@ -5,10 +5,16 @@ window.onload = function() {
     tree.setIcon('img/produtos.png');
     tree.setColapse(true);
     tree.setCheck(true);
-    tree.setMonitorEvent("OnCheck", function(id, check, obj) {
-        console.log(id, check, obj);
-    });
+    tree.setButtons([{
+            name: "Salvar",
+            icon: "img/add.png",
+            eventReturn: "objectChecked",
+            callback: function(json) {
+                console.log(json);
+            }
+    }]);
+//    tree.setMonitorEvent("OnCheck", function(id, check, obj) {
+//        console.log(id, check, obj);
+//    });
     tree.init(js);
-    
-    console.log(tree);
 };

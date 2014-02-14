@@ -1,5 +1,4 @@
 var js = [{
-        "check": true,
         "nome": "PROPRIO",
         "id": "6",
         "idGroup": "0",
@@ -14,7 +13,6 @@ var js = [{
                         "tipo": "1"
                     }]
             }, {
-                "check": true,
                 "nome": "filho 2P",
                 "id": "17",
                 "idGroup": "6",
@@ -24,7 +22,6 @@ var js = [{
                         "nome": "PRANCHA REMINGTON OPP S1001",
                         "tipo": "1"
                     }, {
-                        "check": true,
                         "id": "19",
                         "idGroup": "17",
                         "nome": "PRANCHA REMINGTON PEARL S9500",
@@ -51,7 +48,6 @@ var js = [{
                         "tipo": "1"
                     }]
             }, {
-                "check": true,
                 "nome": "filho 2P",
                 "id": "23",
                 "idGroup": "7",
@@ -61,13 +57,11 @@ var js = [{
                         "nome": "PRANCHA REMINGTON OPP S1001",
                         "tipo": "1"
                     }, {
-                        "check": true,
                         "id": "25",
                         "idGroup": "23",
                         "nome": "PRANCHA REMINGTON PEARL S9500",
                         "tipo": "1"
                     }, {
-                        "check": true,
                         "id": "26",
                         "idGroup": "23",
                         "nome": "SECADOR DOBR\u00c1VEL D2922",
