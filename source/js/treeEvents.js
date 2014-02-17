@@ -237,10 +237,12 @@ var TreeEvents = function() {
     
     /**
      * Função que retorna para o usuário os callback dos botões
+     * @param {DON} element
      * @param {string} event
      * @param {Function} callback
+     * @return {void}
      */
-    var eventButton = function(event, callback) {
+    var eventButton = function(element, event, callback) {
         switch (event) {
             case "objectChecked":
                 callback(checksSelect);

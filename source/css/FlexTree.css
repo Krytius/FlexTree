@@ -115,11 +115,18 @@
 .mw-tree-buttons .mw-button-custom {
     height: 25px;
     background-color: #8BC53B;
-    margin: 4px 4px;
+    margin: 3px 4px;
     float: right;
     -webkit-border-radius: 15px;  
     -moz-border-radius: 15px;  
     border-radius: 15px;
+    border: 1px solid #629122;
+    -webkit-box-shadow: inset 0px 0px 4px 0px rgba(0,0,0,1); -moz-box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,1); 
+    box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,1);
+}
+
+.mw-tree-buttons .mw-button-custom:hover {
+    background-color: #629122;
 }
 
 .mw-tree-buttons .mw-button-custom .mw-text-button {  
@@ -127,14 +134,14 @@
     float: left;
     line-height: 24px;
     font-family: Verdana;  
-    font-size: 12px;  
+    font-size: 11px;  
     text-align: center; 
     color: white; 
     font-weight: bold;
     margin: 0px 10px;
     background-repeat: no-repeat;
     background-position: 0 5px;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     cursor: default;
 }
 
