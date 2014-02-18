@@ -11,7 +11,8 @@ window.onload = function() {
             eventReturn: "objectChecked",
             callback: function(json) {
                 console.log(json);
-            }
+            },
+            width: 100
     }]);
 //    tree.setMonitorEvent("OnCheck", function(id, check, obj) {
 //        console.log(id, check, obj);
