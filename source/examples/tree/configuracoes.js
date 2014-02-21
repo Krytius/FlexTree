@@ -14,8 +14,8 @@ window.onload = function() {
             },
             width: 100
     }]);
-//    tree.setMonitorEvent("OnCheck", function(id, check, obj) {
-//        console.log(id, check, obj);
-//    });
+   tree.setMonitorEvent("onCheck", function(id, check, obj) {
+       console.log(id, check, obj);
+   });
     tree.init(js);
 };

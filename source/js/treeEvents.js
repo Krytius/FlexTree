@@ -137,6 +137,10 @@ var TreeEvents = function() {
         // Marcar Pai
         marcarPai(grupo, object.getObject());
 
+        if (onCheckEvent) {
+            onCheckEvent(id, mark, checksSelect);
+        }
+
     };
 
     /**
@@ -177,10 +181,6 @@ var TreeEvents = function() {
 
         var index = checksSelect.indexOf(id);
         checksSelect.splice(index, 1);
-
-        if (onCheckEvent) {
-            onCheckEvent(id, false, checksSelect);
-        }
     };
 
     /**
@@ -193,10 +193,6 @@ var TreeEvents = function() {
 
         if (index === -1) {
             checksSelect.push(id);
-        }
-
-        if (onCheckEvent) {
-            onCheckEvent(id, true, checksSelect);
         }
     };
     
@@ -263,7 +259,7 @@ var TreeEvents = function() {
      */
     var setMonitorEvents = function(evento, callback) {
         switch (evento) {
-            case "OnCheck":
+            case "onCheck":
                 onCheckEvent = callback;
                 break;
         }
