@@ -6,6 +6,7 @@
     -khtml-user-select: none;  
     -moz-user-select: none;  
     -ms-user-select: none;
+    overflow-y: hidden;
 }
 
 .mw-title {
@@ -34,19 +35,23 @@
 }
 
 .mw-tree-view {
-    overflow: auto;
+    overflow-y: auto;
     border-bottom: 1px solid #E4E4E4;
     box-shadow: inset 0 -1px 2px #F3F2F2;
 }
 
 .mw-topic {
     height: 20px;
-    float: right;
+    float: left;
 }
 
 .mw-topic:hover {
-    background-color: #F7F7F7;
     font-weight: bold;
+}
+
+.mw-topic .mw-topic-recuo {
+    float: left;
+    height: 20px;
 }
 
 .mw-topic .mw-title-tree {
@@ -54,7 +59,7 @@
     font-size: 11px;
     height: 20px;
     line-height: 20px;
-    float: right;
+    float: left;
     cursor: default;
 }
 
@@ -64,7 +69,7 @@
     background-position: center;
     width: 15px;
     height: 20px;
-    float: right;
+    float: left;
     margin-right: 5px;
 }
 
@@ -74,7 +79,7 @@
     background-position: center;
     width: 15px;
     height: 20px;
-    float: right;
+    float: left;
     margin-right: 5px;
 }
 
@@ -84,7 +89,7 @@
     background-position: center;
     width: 15px;
     height: 20px;
-    float: right;
+    float: left;
     margin-right: 5px;
 }
 
@@ -94,7 +99,7 @@
     background-position: center;
     width: 14px;
     height: 20px;
-    float: right;
+    float: left;
     margin-right: 6px;
 }
 

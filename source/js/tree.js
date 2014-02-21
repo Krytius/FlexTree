@@ -126,6 +126,11 @@ var Tree = function(elem) {
         var documentContent = createContent();
         element.appendChild(documentContent);
 
+        var quant = document.querySelectorAll('#mw-content-tree').length;
+        for(var i=0; i<quant; i++) {
+            document.querySelectorAll('#mw-content-tree')[i].style.width = treeCreate.tamanhoContent() + 'px';
+        }
+
         if (button) {
             var documentButton = createButton();
             element.appendChild(documentButton);

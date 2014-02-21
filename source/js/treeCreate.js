@@ -7,7 +7,7 @@ var TreeCreate = function() {
     //
 
     var object = {};
-
+    var tamanhoContent = 0;
 
     //
     //
@@ -30,6 +30,11 @@ var TreeCreate = function() {
     //  Informações
     //
     //
+    
+    var getTamanhoContent = function() {
+        return tamanhoContent;
+    };
+    
 
     /**
      * Função recursiva que retorna no qual posicao de filiação da arvore encontra o id
@@ -137,7 +142,7 @@ var TreeCreate = function() {
      */
     var createTree = function(obj) {
         var quant = obj.length;
-
+        
         var div = object.create('div');
         div.setAttribute('id', 'mw-content-tree');
 
@@ -150,30 +155,20 @@ var TreeCreate = function() {
             ele.className = 'mw-topic';
             ele.setAttribute('data-id', obj[i].id);
             ele.setAttribute('group-id', obj[i].idGroup);
-            ele.style.width = calculoRecuoDiv(posicao) + 'px';
+
+            // Recuo
+            var recuo = object.create('div');
+            recuo.className = 'mw-topic-recuo';
+            recuo.style.width = calculoRecuoDiv(posicao) + 'px';
+            ele.appendChild(recuo);
+
+            var clear = object.create('div')
+            clear.style.clear = 'both';
+            var clear2 = object.create('div')
+            clear2.style.clear = 'both';
 
             if (!object.getCheck()) {
                 ele.onclick = object.treeEvents.openCloseGroup;
-            }
-
-            // Titulo
-            var text = object.create('div');
-            text.className = 'mw-title-tree';
-            text.innerHTML = obj[i].nome;
-            text.style.width = calculoRecuoTitle(ele) + 'px';
-            text.onclick = object.treeEvents.eventsTitle;
-
-            ele.appendChild(text);
-
-            // CheckBox
-            if (object.getCheck()) {
-                var check = object.create('div');
-                check.className = (obj[i].check) ? "checkActive" : "checkInative";
-                check.setAttribute('id', 'mw-check');
-
-                check.onclick = object.treeEvents.markDesmarkCheck;
-
-                ele.appendChild(check);
             }
 
             // Seta
@@ -187,8 +182,28 @@ var TreeCreate = function() {
                 ele.appendChild(icon);
             }
 
+            // CheckBox
+            if (object.getCheck()) {
+                var check = object.create('div');
+                check.className = (obj[i].check) ? "checkActive" : "checkInative";
+                check.setAttribute('id', 'mw-check');
+
+                check.onclick = object.treeEvents.markDesmarkCheck;
+
+                ele.appendChild(check);
+            }
+
+            // Titulo
+            var text = object.create('div');
+            text.className = 'mw-title-tree';
+            text.innerHTML = obj[i].nome;
+            text.onclick = object.treeEvents.eventsTitle;
+
+            ele.appendChild(text);
+
             // Titulo Colocado
             div.appendChild(ele);
+            div.appendChild(clear);
 
             if (posicao > 1) {
                 ele.parentNode.setAttribute('data-id', obj[i].id);
@@ -208,8 +223,14 @@ var TreeCreate = function() {
                 var filhos = createTree(obj[i].filho);
                 div.appendChild(filhos);
             }
-        }
 
+            div.appendChild(clear2);
+
+            var tamanhoCont = calculoRecuoDiv(posicao) + ((child) ? 15 : 0) + ((object.getCheck()) ? 15 : 0) + (obj[i].nome.length * 9);
+            if (tamanhoContent < tamanhoCont) {
+                tamanhoContent = tamanhoCont;
+            }
+        }
         return div;
     };
 
@@ -241,8 +262,8 @@ var TreeCreate = function() {
         text.innerHTML = obj.name;
         text.style.backgroundImage = 'url(' + obj.icon + ')';
         text.className = "mw-text-button";
-        
-        if(!obj.width)
+
+        if (!obj.width)
             text.style.width = (calculaEspacoButton() - 20) + "px";
         else
             text.style.width = (obj.width - 20) + "px";
@@ -259,17 +280,18 @@ var TreeCreate = function() {
     /**
      * Método que calcula o recuo da div topic
      * @param  {integer} posicao
-     * @return {integer}         
+     * @return {integer}
      */
     var calculoRecuoDiv = function(posicao) {
-        var width = object.element.offsetWidth - (((posicao) ? posicao : 0) * 20);
+        //var width = object.element.offsetWidth - (((posicao) ? posicao : 0) * 20);
+        var width = (((posicao) ? posicao : 0) * 20);
         return width;
     };
 
     /**
      * Função que calcula o tamanho que o titulo pode ter
      * @param  {DON}        element
-     * @return {integer}    
+     * @return {integer}
      */
     var calculoRecuoTitle = function(element) {
         var width = parseInt(element.style.width) - (((!object.getCheck()) ? 25 : 40));
@@ -313,7 +335,8 @@ var TreeCreate = function() {
         returnTreeDown: returnTreeDown,
         returnTreeUp: returnTreeUp,
         createButton: createButton,
-        calculoElementos: calculoElementos
+        calculoElementos: calculoElementos,
+        tamanhoContent: getTamanhoContent
     };
 
     return retorno;
