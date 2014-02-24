@@ -73,6 +73,13 @@
     margin-right: 5px;
 }
 
+.mw-topic .recuoSeta {
+    width: 15px;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+}
+
 .mw-topic .arrowActive {
     background-image: url(img/treeActive.png);
     background-repeat: no-repeat;
@@ -109,7 +116,7 @@
     background-position: center;
     width: 14px;
     height: 20px;
-    float: right;
+    float: left;
     margin-right: 6px;
 }
 

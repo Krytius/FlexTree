@@ -97,12 +97,64 @@ var Tree = function(elem) {
      * @param  {Object} json
      * @return {void}
      */
-    var init = function(json) {
+    var init = function(json, type) {
+        if (type) {
+            json = covertObject(json, type);
+        }
+
         object = json;
 
         start();
         return;
     };
+
+    /**
+     * Função que pega alguns tipos especificos de
+     * objetos e converte para objeto padrão do plugin
+     * @param  {Object} json
+     * @param  {String} type
+     * @return {Object}
+     */
+    var covertObject = function(json, type) {
+        var obj = [];
+
+        switch (type) {
+            case 'object':
+                for (var key in json) {
+                    var filho;
+                    if (!json[key].filho.length) {
+                        filho = recursividadeObject(json[key].filho);
+                        if (filho.length > 0) {
+                            json[key].filho = filho;
+                        }
+
+                    }
+                    obj.push(json[key]);
+                }
+                break;
+        }
+
+        return obj;
+
+    };
+
+    var recursividadeObject = function(json) {
+        var obj = [];
+
+        for (var key in json) {
+            var filho;
+            if (!json[key].filho.length) {
+                filho = recursividadeObject(json[key].filho);
+                if (filho.length > 0) {
+                    json[key].filho = filho;
+                }
+            }
+
+            obj.push(json[key]);
+        }
+
+        return obj;
+    }
 
     /**
      * Bootstrap do plugin
@@ -127,7 +179,7 @@ var Tree = function(elem) {
         element.appendChild(documentContent);
 
         var quant = document.querySelectorAll('#mw-content-tree').length;
-        for(var i=0; i<quant; i++) {
+        for (var i = 0; i < quant; i++) {
             document.querySelectorAll('#mw-content-tree')[i].style.width = treeCreate.tamanhoContent() + 'px';
         }
 
@@ -252,8 +304,8 @@ var Tree = function(elem) {
     /**
      * Função que remove as classes do elemento solicitado
      * @param  {string}     classe
-     * @param  {DON}        element 
-     * @return {void}         
+     * @param  {DON}        element
+     * @return {void}
      */
     var removeClass = function(classe, element) {
         if (element)
@@ -262,10 +314,10 @@ var Tree = function(elem) {
 
     /**
      * Função que troca classe uma pela outra
-     * @param  {string}     next    
-     * @param  {string}     prev    
+     * @param  {string}     next
+     * @param  {string}     prev
      * @param  {DON}        element
-     * @return {void}          
+     * @return {void}
      */
     var replaceClass = function(next, prev, element) {
         if (element)

@@ -149,7 +149,7 @@ var TreeCreate = function() {
         for (var i = 0; i < quant; i++) {
 
             var posicao = returnPosition(object.getObject(), obj[i].id);
-            var child = (obj[i].filho) ? 1 : 0;
+            var child = (obj[i].filho.length > 0) ? 1 : 0;
 
             var ele = object.create('div');
             ele.className = 'mw-topic';
@@ -180,6 +180,10 @@ var TreeCreate = function() {
                 }
 
                 ele.appendChild(icon);
+            } else {
+                var recuoSeta = object.create('i');
+                recuoSeta.className = 'recuoSeta';
+                ele.appendChild(recuoSeta);
             }
 
             // CheckBox
@@ -226,7 +230,7 @@ var TreeCreate = function() {
 
             div.appendChild(clear2);
 
-            var tamanhoCont = calculoRecuoDiv(posicao) + ((child) ? 15 : 0) + ((object.getCheck()) ? 15 : 0) + (obj[i].nome.length * 9);
+            var tamanhoCont = calculoRecuoDiv(posicao) + ((child) ? 20 : 0) + ((object.getCheck()) ? 20 : 0) + (obj[i].nome.length * 7);
             if (tamanhoContent < tamanhoCont) {
                 tamanhoContent = tamanhoCont;
             }

@@ -66,8 +66,9 @@ var TreeEvents = function() {
         }
 
         var grupo = ele.getAttribute('data-id');
-        var element = object.selector('.mw-group[group-id="' + grupo + '"]')[0];
+        var element = object.selector('.mw-group[group-id="' + grupo + '"]');
 
+        console.log(element, ele, element2);
         if (element.style.display === 'block') {
             element.style.display = 'none';
             object.replaceClass('arrowActive', 'arrowInactive', element2);
