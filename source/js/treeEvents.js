@@ -68,7 +68,6 @@ var TreeEvents = function() {
         var grupo = ele.getAttribute('data-id');
         var element = object.selector('.mw-group[group-id="' + grupo + '"]');
 
-        console.log(element, ele, element2);
         if (element.style.display === 'block') {
             element.style.display = 'none';
             object.replaceClass('arrowActive', 'arrowInactive', element2);
@@ -139,7 +138,7 @@ var TreeEvents = function() {
         marcarPai(grupo, object.getObject());
 
         if (onCheckEvent) {
-            onCheckEvent(id, mark, checksSelect);
+            onCheckEvent(id, mark, checksSelect, treeRetorno(grupo, id));
         }
 
     };
@@ -264,6 +263,20 @@ var TreeEvents = function() {
                 onCheckEvent = callback;
                 break;
         }
+    };
+
+    var treeRetorno = function(grupo, id) {
+        var tree = [];
+        var pai = object.treeCreate.returnTreeUp(object.getObject(), grupo);
+        
+        tree.push(object.treeCreate.returnTreePosition(object.getObject(), id));
+        
+        while(pai) {
+            tree.push(pai);
+            pai = object.treeCreate.returnTreeUp(object.getObject(), pai.idGroup);
+        }
+
+        return tree;
     };
 
     //

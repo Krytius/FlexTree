@@ -30,7 +30,18 @@ var js = {
 						"idGroup": "23",
 						"nome": "EXTRA - Hipermercado",
 						"nivel_mercado": "3",
-						"filho": []
+						"filho": {
+							"221394": {
+								"nome": "Supermercado BH",
+								"id": "221394",
+								"id": "24"
+							},
+							"221395": {
+								"nome": "Extra, extra ...",
+								"id": "221395",
+								"idGroup": "24"
+							}
+						}
 					},
 					"25": {
 						"id": "25",
@@ -45,6 +56,16 @@ var js = {
 						"nome": "EXTRA - Minimercado",
 						"nivel_mercado": "3",
 						"filho": []
+					},
+					"221394": {
+						"nome": "Supermercado BH",
+						"id": "221394",
+						"idGroup": "23"
+					},
+					"221395": {
+						"nome": "Extra, extra ...",
+						"id": "221395",
+						"idGroup": "23"
 					}
 				}
 			},
@@ -75,6 +96,16 @@ var js = {
 				"nome": "GPA - Casas Bahia",
 				"nivel_mercado": "2",
 				"filho": []
+			},
+			"221394": {
+				"nome": "Supermercado BH",
+				"id": "221394",
+				"idGroup": "20"
+			},
+			"221395": {
+				"nome": "Extra, extra ...",
+				"id": "221395",
+				"idGroup": "20"
 			}
 		}
 	},
@@ -89,7 +120,18 @@ var js = {
 				"idGroup": "32",
 				"nome": "B2W - Lojas Americanas",
 				"nivel_mercado": "2",
-				"filho": []
+				"filho": {
+					"221397": {
+						"nome": "Rotatorio novo eldorado",
+						"id": "221397",
+						"idGroup": "33"
+					}
+				}
+			},
+			"221397": {
+				"nome": "Rotatorio novo eldorado",
+				"id": "221397",
+				"idGroup": "32"
 			}
 		}
 	},
@@ -111,7 +153,63 @@ var js = {
 				"idGroup": "35",
 				"nome": "Carrefour Supermercado",
 				"nivel_mercado": "2",
-				"filho": []
+				"filho": {
+					"221330": {
+						"nome": "CARREFOUR OSASCO",
+						"id": "221330",
+						"idGroup": "36"
+					},
+					"221331": {
+						"nome": "CARREFOUR TAMBORÃ",
+						"id": "221331",
+						"idGroup": "36"
+					},
+					"221334": {
+						"nome": "CARREFOUR BUTANTÃ",
+						"id": "221334",
+						"idGroup": "36"
+					},
+					"221335": {
+						"nome": "CARREFOUR CENTER NORTE",
+						"id": "221335",
+						"idGroup": "36"
+					},
+					"221336": {
+						"nome": "CARREFOUR IMIGRANTES",
+						"id": "221336",
+						"idGroup": "36"
+					},
+					"221337": {
+						"nome": "CARREFOUR INTERLAGOS",
+						"id": "221337",
+						"idGroup": "36"
+					},
+					"221338": {
+						"nome": "CARREFOUR LIMÃO",
+						"id": "221338",
+						"idGroup": "36"
+					},
+					"221339": {
+						"nome": "CARREFOUR ORATÃRIO - SANTO ANDRÃ",
+						"id": "221339",
+						"idGroup": "36"
+					},
+					"221340": {
+						"nome": "CARREFOUR PINHEIROS",
+						"id": "221340",
+						"idGroup": "36"
+					},
+					"221341": {
+						"nome": "CARREFOUR REBOUÃAS",
+						"id": "221341",
+						"idGroup": "36"
+					},
+					"221342": {
+						"nome": "CARREFOUR SÃO BERNARDO - VERGUEIRO",
+						"id": "221342",
+						"idGroup": "36"
+					}
+				}
 			},
 			"37": {
 				"id": "37",
@@ -126,6 +224,61 @@ var js = {
 				"nome": "Atacadão",
 				"nivel_mercado": "2",
 				"filho": []
+			},
+			"221330": {
+				"nome": "CARREFOUR OSASCO",
+				"id": "221330",
+				"idGroup": "35"
+			},
+			"221331": {
+				"nome": "CARREFOUR TAMBORÃ",
+				"id": "221331",
+				"idGroup": "35"
+			},
+			"221334": {
+				"nome": "CARREFOUR BUTANTÃ",
+				"id": "221334",
+				"idGroup": "35"
+			},
+			"221335": {
+				"nome": "CARREFOUR CENTER NORTE",
+				"id": "221335",
+				"idGroup": "35"
+			},
+			"221336": {
+				"nome": "CARREFOUR IMIGRANTES",
+				"id": "221336",
+				"idGroup": "35"
+			},
+			"221337": {
+				"nome": "CARREFOUR INTERLAGOS",
+				"id": "221337",
+				"idGroup": "35"
+			},
+			"221338": {
+				"nome": "CARREFOUR LIMÃO",
+				"id": "221338",
+				"idGroup": "35"
+			},
+			"221339": {
+				"nome": "CARREFOUR ORATÃRIO - SANTO ANDRÃ",
+				"id": "221339",
+				"idGroup": "35"
+			},
+			"221340": {
+				"nome": "CARREFOUR PINHEIROS",
+				"id": "221340",
+				"idGroup": "35"
+			},
+			"221341": {
+				"nome": "CARREFOUR REBOUÃAS",
+				"id": "221341",
+				"idGroup": "35"
+			},
+			"221342": {
+				"nome": "CARREFOUR SÃO BERNARDO - VERGUEIRO",
+				"id": "221342",
+				"idGroup": "35"
 			}
 		}
 	},
@@ -148,7 +301,13 @@ var js = {
 		"idGroup": "0",
 		"nome": "Pernambucanas",
 		"nivel_mercado": "1",
-		"filho": []
+		"filho": {
+			"221393": {
+				"nome": "Vilma Alimentos",
+				"id": "221393",
+				"idGroup": "41"
+			}
+		}
 	},
 	"42": {
 		"id": "42",
@@ -268,7 +427,13 @@ var js = {
 				"idGroup": "61",
 				"nome": "Supermercados Epa",
 				"nivel_mercado": "2",
-				"filho": []
+				"filho": {
+					"221393": {
+						"nome": "Vilma Alimentos",
+						"id": "221393",
+						"idGroup": "62"
+					}
+				}
 			},
 			"63": {
 				"id": "63",
@@ -283,6 +448,11 @@ var js = {
 				"nome": "Supermercados Mart Plus",
 				"nivel_mercado": "2",
 				"filho": []
+			},
+			"221393": {
+				"nome": "Vilma Alimentos",
+				"id": "221393",
+				"idGroup": "61"
 			}
 		}
 	},
@@ -298,7 +468,13 @@ var js = {
 		"idGroup": "0",
 		"nome": "Assaí Atacadista",
 		"nivel_mercado": "1",
-		"filho": []
+		"filho": {
+			"221409": {
+				"nome": "Loja Leandro Alfa",
+				"id": "221409",
+				"idGroup": "66"
+			}
+		}
 	},
 	"67": {
 		"id": "67",
@@ -312,7 +488,13 @@ var js = {
 		"idGroup": "0",
 		"nome": "Coop - Cooperativa de Consumo",
 		"nivel_mercado": "1",
-		"filho": []
+		"filho": {
+			"221396": {
+				"nome": "Campo dee Futibol",
+				"id": "221396",
+				"idGroup": "68"
+			}
+		}
 	},
 	"69": {
 		"id": "69",
@@ -389,7 +571,28 @@ var js = {
 				"idGroup": "78",
 				"nome": "Supermercados Peralta",
 				"nivel_mercado": "2",
-				"filho": []
+				"filho": {
+					"221392": {
+						"nome": "Looja",
+						"id": "221392",
+						"idGroup": "79"
+					},
+					"221393": {
+						"nome": "Vilma Alimentos",
+						"id": "221393",
+						"idGroup": "79"
+					}
+				}
+			},
+			"221392": {
+				"nome": "Looja",
+				"id": "221392",
+				"idGroup": "78"
+			},
+			"221393": {
+				"nome": "Vilma Alimentos",
+				"id": "221393",
+				"idGroup": "78"
 			}
 		}
 	},
@@ -470,13 +673,25 @@ var js = {
 		"idGroup": "0",
 		"nome": "Tenda Atacadista",
 		"nivel_mercado": "1",
-		"filho": []
+		"filho": {
+			"221413": {
+				"nome": "Loja Alfa",
+				"id": "221413",
+				"idGroup": "90"
+			}
+		}
 	},
 	"1000000001": {
 		"id": "1000000001",
 		"idGroup": "0",
 		"nome": "Rede Devassa",
 		"nivel_mercado": "1",
-		"filho": []
+		"filho": {
+			"221317": {
+				"nome": "Loja Conceito Devassa",
+				"id": "221317",
+				"idGroup": "1000000001"
+			}
+		}
 	}
 }

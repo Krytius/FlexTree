@@ -8,6 +8,7 @@ var Tree = function(elem) {
 
     var treeCreate = new TreeCreate;
     var treeEvents = new TreeEvents;
+    var treeFilter = new TreeFilter;
 
     // 
     // 
@@ -30,6 +31,7 @@ var Tree = function(elem) {
     var colapse;
     var check;
     var button;
+    var filter;
 
     //	
     //	
@@ -85,6 +87,24 @@ var Tree = function(elem) {
     var getButons = function(val) {
         return button;
     };
+    
+    var setFilter = function(val) {
+        filter = val;
+        return;
+    };
+    
+    var getFilter = function() {
+        return filter;
+    };
+    
+    var getDimension = function() {
+        return dimensionElement; 
+    };
+    
+    var setDimension = function(val) {
+        dimensionElement = val;
+        return;
+    };
 
     //	
     //	
@@ -95,6 +115,7 @@ var Tree = function(elem) {
     /**
      * Função que inicia os processos do plugin
      * @param  {Object} json
+     * @param  {Object} type
      * @return {void}
      */
     var init = function(json, type) {
@@ -122,31 +143,37 @@ var Tree = function(elem) {
             case 'object':
                 for (var key in json) {
                     var filho;
-                    if (!json[key].filho.length) {
+                    if (json[key].filho.length === undefined) {
                         filho = recursividadeObject(json[key].filho);
                         if (filho.length > 0) {
                             json[key].filho = filho;
                         }
-
                     }
                     obj.push(json[key]);
                 }
                 break;
         }
-
         return obj;
 
     };
 
+    /**
+     * Recursividade do treeview
+     * @param  {Object} json
+     * @return {Object}
+     */
     var recursividadeObject = function(json) {
         var obj = [];
 
         for (var key in json) {
             var filho;
-            if (!json[key].filho.length) {
-                filho = recursividadeObject(json[key].filho);
-                if (filho.length > 0) {
-                    json[key].filho = filho;
+
+            if (json[key].filho) {
+                if (json[key].filho.length === undefined) {
+                    filho = recursividadeObject(json[key].filho);
+                    if (filho.length > 0) {
+                        json[key].filho = filho;
+                    }
                 }
             }
 
@@ -154,7 +181,7 @@ var Tree = function(elem) {
         }
 
         return obj;
-    }
+    };
 
     /**
      * Bootstrap do plugin
@@ -172,6 +199,12 @@ var Tree = function(elem) {
 
         if (title) {
             var documentTitle = createTitle();
+            
+            if(filter) {
+                var documentFilter = treeFilter.createFilter();
+                documentTitle.appendChild(documentFilter)
+            }
+            
             element.appendChild(documentTitle);
         }
 
@@ -203,6 +236,7 @@ var Tree = function(elem) {
     var initModules = function() {
         treeCreate.init(retorno);
         treeEvents.init(retorno);
+        treeFilter.init(retorno);
     };
 
     //	
@@ -334,15 +368,17 @@ var Tree = function(elem) {
         //Classes
         treeCreate: treeCreate,
         treeEvents: treeEvents,
+        treeFilter: treeFilter,
         // Object Padrão
         object: object,
         // Inicialização do TreeView
         init: init,
+        refresh: treeCreate.refreshTree,
         // Getters Setters
         getObject: getObject,
         getTitle: getTitle,
-        getIcon: getIcon,
         setTitle: setTitle,
+        getIcon: getIcon,
         setIcon: setIcon,
         setColapse: setColapse,
         getColapse: getColapse,
@@ -350,6 +386,10 @@ var Tree = function(elem) {
         getCheck: getCheck,
         setButtons: setButons,
         getButtons: getButons,
+        setFilter: setFilter,
+        getFilter: getFilter,
+        getDimension: getDimension,
+        setDimension: setDimension,
         // Manipuladores de DON
         create: create,
         selector: selector,

@@ -1,282 +1,281 @@
 var js = [{
-    "id": "20",
+    "id": "6",
     "idGroup": "0",
-    "nome": "GPA - Grupo Pão de Açucar",
+    "nome": "PROPRIO",
     "filho": [{
-        "id": "21",
-        "idGroup": "20",
-        "nome": "GPA - Assaí"
-    }, {
-        "id": "22",
-        "idGroup": "20",
-        "nome": "GPA - Drogarias"
-    }, {
-        "id": "23",
-        "idGroup": "20",
-        "nome": "GPA - Extra",
+        "id": "15",
+        "idGroup": "6",
+        "nome": "filho 1P",
         "filho": [{
-            "id": "24",
-            "idGroup": "23",
-            "nome": "EXTRA - Hipermercado"
+            "id": "17",
+            "idGroup": "15",
+            "nome": "neto 1",
+            "filho": [{
+                "id": "18",
+                "idGroup": "17",
+                "nome": "bisuneto",
+                "filho": [{
+                    "id": "19",
+                    "idGroup": "18",
+                    "nome": "tataraneto",
+                    "filho": [{
+                        "id": "890",
+                        "idGroup": "19",
+                        "nome": "BARBEADOR ROTATIVO R91"
+                    }, {
+                        "id": "891",
+                        "idGroup": "19",
+                        "nome": "BARBEADOR R455"
+                    }]
+                }]
+            }]
         }, {
-            "id": "25",
-            "idGroup": "23",
-            "nome": "EXTRA - Supermercado"
-        }, {
-            "id": "26",
-            "idGroup": "23",
-            "nome": "EXTRA - Minimercado"
+            "id": "961",
+            "idGroup": "15",
+            "nome": "Produto Leandro"
         }]
     }, {
-        "id": "27",
-        "idGroup": "20",
-        "nome": "GPA - Ponto Frio"
-    }, {
-        "id": "28",
-        "idGroup": "20",
-        "nome": "GPA - Pão de Açucar"
-    }, {
-        "id": "30",
-        "idGroup": "20",
-        "nome": "GPA - Posto de Combustível"
-    }, {
-        "id": "31",
-        "idGroup": "20",
-        "nome": "GPA - Casas Bahia"
+        "id": "16",
+        "idGroup": "6",
+        "nome": "filho 2P",
+        "filho": [{
+            "id": "887",
+            "idGroup": "16",
+            "nome": "PRANCHA REMINGTON PEARL S9500"
+        }, {
+            "id": "888",
+            "idGroup": "16",
+            "nome": "SECADOR DOBRÃVEL D2922"
+        }]
     }]
 }, {
-    "id": "32",
+    "id": "7",
     "idGroup": "0",
-    "nome": "B2W - Companhia Global do Varejo",
+    "nome": "TAIFF",
     "filho": [{
-        "id": "33",
-        "idGroup": "32",
-        "nome": "B2W - Lojas Americanas"
+        "id": "898",
+        "idGroup": "7",
+        "nome": "TAIFF SECADOR GLOSS"
+    }, {
+        "id": "899",
+        "idGroup": "7",
+        "nome": "TAIFF SECADOR SMART"
+    }, {
+        "id": "900",
+        "idGroup": "7",
+        "nome": "TAIFF SECADOR BLACK"
+    }, {
+        "id": "901",
+        "idGroup": "7",
+        "nome": "TAIFF PRANCHA SMART"
+    }, {
+        "id": "902",
+        "idGroup": "7",
+        "nome": "TAIFF PRANCHA CERÃMICA CLASSICA"
+    }, {
+        "id": "903",
+        "idGroup": "7",
+        "nome": "TAIFF PRANCHA LOOK"
+    }, {
+        "id": "904",
+        "idGroup": "7",
+        "nome": "TAIFF PRANCHA RED ION ELEGANCE"
+    }, {
+        "id": "905",
+        "idGroup": "7",
+        "nome": "TAIFF BLUE ION"
     }]
 }, {
-    "id": "34",
+    "id": "8",
     "idGroup": "0",
-    "nome": "C&C - Casa e Construção"
-}, {
-    "id": "35",
-    "idGroup": "0",
-    "nome": "Grupo Carrefour",
+    "nome": "GAMA",
     "filho": [{
-        "id": "36",
-        "idGroup": "35",
-        "nome": "Carrefour Supermercado"
+        "id": "907",
+        "idGroup": "8",
+        "nome": "GAMA SECADOR 2000 CERAMIC ION"
     }, {
-        "id": "37",
-        "idGroup": "35",
-        "nome": "Carrefour Bairro"
+        "id": "908",
+        "idGroup": "8",
+        "nome": "GAMA SECADOR INFRARED ION"
     }, {
-        "id": "38",
-        "idGroup": "35",
-        "nome": "Atacadão"
+        "id": "909",
+        "idGroup": "8",
+        "nome": "GAMA DELTA 2000"
+    }, {
+        "id": "910",
+        "idGroup": "8",
+        "nome": "GAMA PRANCHA INFINITY ONE"
+    }, {
+        "id": "911",
+        "idGroup": "8",
+        "nome": "GAMA PRANCHA LASER ION"
+    }, {
+        "id": "912",
+        "idGroup": "8",
+        "nome": "GAMA PRANCHA LASER ION TITANIUM"
+    }, {
+        "id": "913",
+        "idGroup": "8",
+        "nome": "GAMA PRANCHA BLUE ION"
     }]
 }, {
-    "id": "39",
+    "id": "9",
     "idGroup": "0",
-    "nome": "Makro"
-}, {
-    "id": "40",
-    "idGroup": "0",
-    "nome": "Pague Menos"
-}, {
-    "id": "41",
-    "idGroup": "0",
-    "nome": "Pernambucanas"
-}, {
-    "id": "42",
-    "idGroup": "0",
-    "nome": "Grupo Supermercados Zona Sul",
+    "nome": "PHILIPS",
     "filho": [{
-        "id": "43",
-        "idGroup": "42",
-        "nome": "Supermercado Zona Sul"
+        "id": "915",
+        "idGroup": "9",
+        "nome": "PHILIPS SECADOR SALON DRY TRAVEL HP4990"
     }, {
-        "id": "44",
-        "idGroup": "42",
-        "nome": "Mega Box"
+        "id": "916",
+        "idGroup": "9",
+        "nome": "PHILIPS SECADOR SALON DRY COMPACT HP 8103"
     }]
 }, {
-    "id": "45",
+    "id": "10",
     "idGroup": "0",
-    "nome": "Telha Norte"
-}, {
-    "id": "46",
-    "idGroup": "0",
-    "nome": "Grupo Wall Mart",
+    "nome": "ARNO",
     "filho": [{
-        "id": "47",
-        "idGroup": "46",
-        "nome": "Supercenter"
+        "id": "933",
+        "idGroup": "10",
+        "nome": "Produto 1000"
     }, {
-        "id": "48",
-        "idGroup": "46",
-        "nome": "Hipermercado Big"
+        "id": "934",
+        "idGroup": "10",
+        "nome": "Produto MIl"
     }, {
-        "id": "49",
-        "idGroup": "46",
-        "nome": "Hiper Bompreço"
+        "id": "937",
+        "idGroup": "10",
+        "nome": "pRODUTO DE tESTE"
     }, {
-        "id": "50",
-        "idGroup": "46",
-        "nome": "Supermercado Bompreço"
+        "id": "938",
+        "idGroup": "10",
+        "nome": "12"
     }, {
-        "id": "51",
-        "idGroup": "46",
-        "nome": "Supermercado Mercadorama"
+        "id": "939",
+        "idGroup": "10",
+        "nome": "78"
     }, {
-        "id": "52",
-        "idGroup": "46",
-        "nome": "Supermercado Nacional"
+        "id": "940",
+        "idGroup": "10",
+        "nome": "45"
     }, {
-        "id": "53",
-        "idGroup": "46",
-        "nome": "Maxxi Atacado"
+        "id": "941",
+        "idGroup": "10",
+        "nome": "Lente 1"
     }, {
-        "id": "54",
-        "idGroup": "46",
-        "nome": "Loja de Vizinhança"
+        "id": "942",
+        "idGroup": "10",
+        "nome": "Lente 2"
     }, {
-        "id": "55",
-        "idGroup": "46",
-        "nome": "Sam´s Club"
+        "id": "943",
+        "idGroup": "10",
+        "nome": "Lente 3"
+    }, {
+        "id": "944",
+        "idGroup": "10",
+        "nome": "Lente 4"
+    }, {
+        "id": "946",
+        "idGroup": "10",
+        "nome": "Teste de produto"
+    }, {
+        "id": "955",
+        "idGroup": "10",
+        "nome": "teste de produto 7"
+    }, {
+        "id": "956",
+        "idGroup": "10",
+        "nome": "teste de produto 7"
+    }, {
+        "id": "957",
+        "idGroup": "10",
+        "nome": "teste de produto 7"
+    }, {
+        "id": "958",
+        "idGroup": "10",
+        "nome": "teste de produto 7"
+    }, {
+        "id": "959",
+        "idGroup": "10",
+        "nome": "tewasdaas"
+    }, {
+        "id": "960",
+        "idGroup": "10",
+        "nome": "Produto Eder"
+    }, {
+        "id": "963",
+        "idGroup": "10",
+        "nome": "Teste de produto"
+    }, {
+        "id": "964",
+        "idGroup": "10",
+        "nome": "teste de produto 2"
+    }, {
+        "id": "965",
+        "idGroup": "10",
+        "nome": "121221"
+    }, {
+        "id": "966",
+        "idGroup": "10",
+        "nome": "Teste de produto"
+    }, {
+        "id": "967",
+        "idGroup": "10",
+        "nome": "teste de produto 3"
     }]
 }, {
-    "id": "60",
+    "id": "11",
     "idGroup": "0",
-    "nome": "Supermercados BH"
-}, {
-    "id": "61",
-    "idGroup": "0",
-    "nome": "DMA - Distribuidora S/A",
+    "nome": "BRITÃNIA",
     "filho": [{
-        "id": "62",
-        "idGroup": "61",
-        "nome": "Supermercados Epa"
+        "id": "921",
+        "idGroup": "11",
+        "nome": "BRITÃNIA PRANCHA AQUA PLUS"
     }, {
-        "id": "63",
-        "idGroup": "61",
-        "nome": "Hipermercados Via Brasil"
+        "id": "922",
+        "idGroup": "11",
+        "nome": "BRITÃNIA PRANCHA FAMA"
     }, {
-        "id": "64",
-        "idGroup": "61",
-        "nome": "Supermercados Mart Plus"
+        "id": "923",
+        "idGroup": "11",
+        "nome": "BRITÃNIA ESCOVA MODELADORA"
+    }, {
+        "id": "924",
+        "idGroup": "11",
+        "nome": "BRITÃNIA TRAVEL KIT"
+    }, {
+        "id": "925",
+        "idGroup": "11",
+        "nome": "BRITÃNIA MODELADOR"
     }]
 }, {
-    "id": "65",
+    "id": "12",
     "idGroup": "0",
-    "nome": "Supermercados Andorinha"
-}, {
-    "id": "66",
-    "idGroup": "0",
-    "nome": "Assaí Atacadista"
-}, {
-    "id": "67",
-    "idGroup": "0",
-    "nome": "Supermercados Comercial Esperança"
-}, {
-    "id": "68",
-    "idGroup": "0",
-    "nome": "Coop - Cooperativa de Consumo"
-}, {
-    "id": "69",
-    "idGroup": "0",
-    "nome": "D´Avó",
+    "nome": "PHILCO",
     "filho": [{
-        "id": "70",
-        "idGroup": "69",
-        "nome": "Supermercado"
+        "id": "927",
+        "idGroup": "12",
+        "nome": "PHILCO SECADOR PROFISSIONAL PH2200"
     }, {
-        "id": "71",
-        "idGroup": "69",
-        "nome": "Hipermercado"
+        "id": "928",
+        "idGroup": "12",
+        "nome": "PHILCO MODELADOR FAST"
     }, {
-        "id": "72",
-        "idGroup": "69",
-        "nome": "Drogaria"
+        "id": "929",
+        "idGroup": "12",
+        "nome": "PHILCO ESCOVA ROTATIVA SPIN ION"
     }, {
-        "id": "73",
-        "idGroup": "69",
-        "nome": "Posto de Gasolina"
+        "id": "930",
+        "idGroup": "12",
+        "nome": "PHILCO ESCOVA ROTATIVA SPIN BRUSH"
+    }, {
+        "id": "931",
+        "idGroup": "12",
+        "nome": "PHILCO CERAMIC STEAM ION"
     }]
 }, {
-    "id": "74",
+    "id": "13",
     "idGroup": "0",
-    "nome": "Supermercados Joanin"
-}, {
-    "id": "75",
-    "idGroup": "0",
-    "nome": "Supermercados Lopes"
-}, {
-    "id": "76",
-    "idGroup": "0",
-    "nome": "Mais Atacadista"
-}, {
-    "id": "77",
-    "idGroup": "0",
-    "nome": "Supermercado Pastorinho"
-}, {
-    "id": "78",
-    "idGroup": "0",
-    "nome": "Rede Paulistão",
-    "filho": [{
-        "id": "79",
-        "idGroup": "78",
-        "nome": "Supermercados Peralta"
-    }]
-}, {
-    "id": "80",
-    "idGroup": "0",
-    "nome": "Grupo Ricoy",
-    "filho": [{
-        "id": "81",
-        "idGroup": "80",
-        "nome": "Supermercados Ricoy"
-    }, {
-        "id": "82",
-        "idGroup": "80",
-        "nome": "Supermercados Peri"
-    }, {
-        "id": "83",
-        "idGroup": "80",
-        "nome": "Supermercados Pão de Mel"
-    }, {
-        "id": "84",
-        "idGroup": "80",
-        "nome": "Supermercados A Mais"
-    }]
-}, {
-    "id": "85",
-    "idGroup": "0",
-    "nome": "Roldão Atacadista"
-}, {
-    "id": "86",
-    "idGroup": "0",
-    "nome": "Grupo Russi",
-    "filho": [{
-        "id": "87",
-        "idGroup": "86",
-        "nome": "Supermercados Russi"
-    }, {
-        "id": "88",
-        "idGroup": "86",
-        "nome": "Supermercados Coopideal"
-    }]
-}, {
-    "id": "89",
-    "idGroup": "0",
-    "nome": "Supermercados Satmo"
-}, {
-    "id": "90",
-    "idGroup": "0",
-    "nome": "Tenda Atacadista"
-}, {
-    "id": "1000000001",
-    "idGroup": "0",
-    "nome": "Rede Devassa"
+    "nome": "FAMA"
 }];
-
-var js2 = [{"id":"20","idGroup":"0","nome":"Grupo A"}] ;

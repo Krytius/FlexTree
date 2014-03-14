@@ -30,11 +30,11 @@ var TreeCreate = function() {
     //  Informações
     //
     //
-    
+
     var getTamanhoContent = function() {
         return tamanhoContent;
     };
-    
+
 
     /**
      * Função recursiva que retorna no qual posicao de filiação da arvore encontra o id
@@ -100,6 +100,56 @@ var TreeCreate = function() {
 
     };
 
+
+    /**
+     * Função que Retorna Arvores posterior ao id informado
+     * @param {Object} obj
+     * @param {integer} id
+     * @return {Object}
+     */
+    var returnTreePosition = function(obj, id) {
+        var quant = obj.length;
+
+        for (var i = 0; i < quant; i++) {
+            if (obj[i].id === id) {
+                return obj[i];
+            }
+        }
+
+        var resp;
+        for (var i = 0; i < quant; i++) {
+            var child = (obj[i].filho) ? 1 : 0;
+            if (child) {
+                resp = returnTreePosition(obj[i].filho, id);
+            }
+
+            if (resp)
+                return resp;
+        }
+
+    };
+
+    var returnTreePositionDown = function(obj, id) {
+        var quant = obj.length;
+
+        for (var i = 0; i < quant; i++) {
+            if (obj[i].id === id) {
+                return obj[i];
+            }
+        }
+
+        var resp;
+        for (var i = 0; i < quant; i++) {
+            var child = (obj[i].filho) ? 1 : 0;
+            if (child) {
+                resp = returnTreePositionDown(obj[i].filho, id);
+            }
+
+            if (resp)
+                return resp;
+        }
+    };
+
     /**
      * Função que retorna o pai do id informado
      * @param {Object} obj
@@ -142,14 +192,19 @@ var TreeCreate = function() {
      */
     var createTree = function(obj) {
         var quant = obj.length;
-        
+
         var div = object.create('div');
         div.setAttribute('id', 'mw-content-tree');
 
         for (var i = 0; i < quant; i++) {
 
             var posicao = returnPosition(object.getObject(), obj[i].id);
-            var child = (obj[i].filho.length > 0) ? 1 : 0;
+            var child;
+            if (obj[i].filho) {
+                child = (obj[i].filho.length > 0) ? 1 : 0;
+            } else {
+                child = 0;
+            }
 
             var ele = object.create('div');
             ele.className = 'mw-topic';
@@ -230,7 +285,7 @@ var TreeCreate = function() {
 
             div.appendChild(clear2);
 
-            var tamanhoCont = calculoRecuoDiv(posicao) + ((child) ? 20 : 0) + ((object.getCheck()) ? 20 : 0) + (obj[i].nome.length * 7);
+            var tamanhoCont = calculoRecuoDiv(posicao) + ((child) ? 20 : 0) + ((object.getCheck()) ? 20 : 0) + (obj[i].nome.length * 9);
             if (tamanhoContent < tamanhoCont) {
                 tamanhoContent = tamanhoCont;
             }
@@ -328,6 +383,120 @@ var TreeCreate = function() {
         return content;
     };
 
+    /**
+     * Reinicia o grid apartir de um novo objeto
+     * @return {void}
+     */
+    var refreshTree = function(obj) {
+        var content = object.selector('.mw-tree-view');
+        content.innerHTML = "";
+        content.appendChild(createTree2(obj));
+    };
+    
+    var createTree2 = function(obj) {
+        var quant = obj.length;
+
+        var div = object.create('div');
+        div.setAttribute('id', 'mw-content-tree');
+
+        for (var i = 0; i < quant; i++) {
+
+            var posicao = returnPosition(obj, obj[i].id);
+            var child;
+            if (obj[i].filho) {
+                child = (obj[i].filho.length > 0) ? 1 : 0;
+            } else {
+                child = 0;
+            }
+
+            var ele = object.create('div');
+            ele.className = 'mw-topic';
+            ele.setAttribute('data-id', obj[i].id);
+            ele.setAttribute('group-id', obj[i].idGroup);
+
+            // Recuo
+            var recuo = object.create('div');
+            recuo.className = 'mw-topic-recuo';
+            recuo.style.width = calculoRecuoDiv(posicao) + 'px';
+            ele.appendChild(recuo);
+
+            var clear = object.create('div')
+            clear.style.clear = 'both';
+            var clear2 = object.create('div')
+            clear2.style.clear = 'both';
+
+            if (!object.getCheck()) {
+                ele.onclick = object.treeEvents.openCloseGroup;
+            }
+
+            // Seta
+            if (child) {
+                var icon = createArrow();
+
+                if (object.getCheck()) {
+                    icon.onclick = object.treeEvents.openCloseGroup;
+                }
+
+                ele.appendChild(icon);
+            } else {
+                var recuoSeta = object.create('i');
+                recuoSeta.className = 'recuoSeta';
+                ele.appendChild(recuoSeta);
+            }
+
+            // CheckBox
+            if (object.getCheck()) {
+                var check = object.create('div');
+                check.className = (obj[i].check) ? "checkActive" : "checkInative";
+                check.setAttribute('id', 'mw-check');
+
+                check.onclick = object.treeEvents.markDesmarkCheck;
+
+                ele.appendChild(check);
+            }
+
+            // Titulo
+            var text = object.create('div');
+            text.className = 'mw-title-tree';
+            text.innerHTML = obj[i].nome;
+            text.onclick = object.treeEvents.eventsTitle;
+
+            ele.appendChild(text);
+
+            // Titulo Colocado
+            div.appendChild(ele);
+            div.appendChild(clear);
+
+            if (posicao > 1) {
+                ele.parentNode.setAttribute('data-id', obj[i].id);
+                ele.parentNode.setAttribute('group-id', obj[i].idGroup);
+                ele.parentNode.className = "mw-group";
+
+                if (object.getColapse()) {
+                    ele.parentNode.style.display = 'block';
+                } else {
+                    ele.parentNode.style.display = 'none';
+                }
+
+            }
+
+            // Filhos
+            if (child) {
+                var filhos = createTree(obj[i].filho);
+                div.appendChild(filhos);
+            }
+
+            div.appendChild(clear2);
+
+            var tamanhoCont = calculoRecuoDiv(posicao) + ((child) ? 20 : 0) + ((object.getCheck()) ? 20 : 0) + (obj[i].nome.length * 9);
+            if (tamanhoContent < tamanhoCont) {
+                tamanhoContent = tamanhoCont;
+            }
+        }
+        return div;
+    };
+    
+
     //
     //
     //	Objeto de Retorno
@@ -338,9 +507,12 @@ var TreeCreate = function() {
         createTree: createTree,
         returnTreeDown: returnTreeDown,
         returnTreeUp: returnTreeUp,
+        returnTreePosition: returnTreePosition,
+        returnTreePositionDown: returnTreePositionDown,
         createButton: createButton,
         calculoElementos: calculoElementos,
-        tamanhoContent: getTamanhoContent
+        tamanhoContent: getTamanhoContent,
+        refreshTree: refreshTree
     };
 
     return retorno;
