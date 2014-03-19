@@ -59,7 +59,6 @@ var TreeFilter = function() {
         for (var i = 0; i < ids.length; i++) {
             objectFiltro.push(object.treeCreate.returnTreePositionDown(object.getObject(), ids[i]));
         }
-        
         object.refresh(objectFiltro);
     };
 
@@ -74,7 +73,7 @@ var TreeFilter = function() {
      * @return {void}
      */
     var createFilter = function() {
-        var dimension = (object.getDimension().width * 0.30);
+        var dimension = (object.getDimension().width * 0.40);
 
         var div = object.create('div');
         div.className = 'mw-filter';

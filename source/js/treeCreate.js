@@ -217,9 +217,9 @@ var TreeCreate = function() {
             recuo.style.width = calculoRecuoDiv(posicao) + 'px';
             ele.appendChild(recuo);
 
-            var clear = object.create('div')
+            var clear = object.create('div');
             clear.style.clear = 'both';
-            var clear2 = object.create('div')
+            var clear2 = object.create('div');
             clear2.style.clear = 'both';
 
             if (!object.getCheck()) {
@@ -382,26 +382,73 @@ var TreeCreate = function() {
 
         return content;
     };
+    
+    /**
+     * Função que plota na tela um carregando
+     * @param {DOn} element
+     * @return {void}
+     */
+    var load = function(element) {
+
+        var div = object.create('div');
+        div.style.width = object.getDimension().width + 'px';
+        div.style.height = object.getDimension().height + 'px';
+        object.addClass('mw-carregando', div);
+
+        var div2 = object.create('div');
+        div2.style.top = (object.getDimension().height / 2 - (128 / 2)) + 'px';
+        div2.style.left = (object.getDimension().width / 2 - (128 / 2)) + 'px';
+        object.addClass('mw-centralizado', div2);
+
+        for (var i = 0; i < 8; i++) {
+            var circulo = object.create('div');
+            circulo.setAttribute('id', 'circ' + i);
+            object.addClass('circulo', circulo);
+
+            div2.appendChild(circulo);
+        }
+
+        div.appendChild(div2);
+        element.appendChild(div);
+    };
+
+    var remove = function(element) {
+        var ele = object.selector('#' + element.id + ' .mw-carregando');
+        element.removeChild(ele);
+    };
 
     /**
      * Reinicia o grid apartir de um novo objeto
+     * @param {Object} obj
      * @return {void}
      */
     var refreshTree = function(obj) {
-        var content = object.selector('.mw-tree-view');
-        content.innerHTML = "";
-        content.appendChild(createTree2(obj));
+        var elemento = object.getElement();
+        elemento.childNodes[1].innerHTML = "";
+        elemento.childNodes[1].appendChild(createTree2(obj, object.treeEvents.getSelected()));
+
+        var quant = object.selector('#mw-content-tree').length;
+        for (var i = 0; i < quant; i++) {
+            object.selector('#mw-content-tree')[i].style.width = getTamanhoContent() + 'px';
+        }
     };
-    
-    var createTree2 = function(obj) {
+
+    /**
+     * Função que cria toda estrutura de procedimento da tree view
+     * @param {Obejct} obj
+     * @param {Array} selecteds
+     * @return {void}
+     */
+    var createTree2 = function(obj, selecteds) {
         var quant = obj.length;
 
         var div = object.create('div');
         div.setAttribute('id', 'mw-content-tree');
 
         for (var i = 0; i < quant; i++) {
+            obj[i] = checksSelecteds(selecteds, obj[i]);
 
-            var posicao = returnPosition(obj, obj[i].id);
+            var posicao = returnPosition(object.getObject(), obj[i].id);
             var child;
             if (obj[i].filho) {
                 child = (obj[i].filho.length > 0) ? 1 : 0;
@@ -420,9 +467,9 @@ var TreeCreate = function() {
             recuo.style.width = calculoRecuoDiv(posicao) + 'px';
             ele.appendChild(recuo);
 
-            var clear = object.create('div')
+            var clear = object.create('div');
             clear.style.clear = 'both';
-            var clear2 = object.create('div')
+            var clear2 = object.create('div');
             clear2.style.clear = 'both';
 
             if (!object.getCheck()) {
@@ -482,7 +529,7 @@ var TreeCreate = function() {
 
             // Filhos
             if (child) {
-                var filhos = createTree(obj[i].filho);
+                var filhos = createTree2(obj[i].filho, selecteds);
                 div.appendChild(filhos);
             }
 
@@ -496,6 +543,32 @@ var TreeCreate = function() {
         return div;
     };
     
+    /**
+     * Função que verifica os itens checados
+     * @param {Array} selecteds
+     * @param {Object} obj
+     * @return {Object}
+     */
+    var checksSelecteds = function(selecteds, obj) {
+        obj.check = false;
+
+        if (selecteds) {
+            for (var k = 0; k < selecteds.length; k++) {
+                if (obj.id === selecteds[k]) {
+                    obj.check = true;
+                    break;
+                }
+            }
+            
+            if (obj.filho) {
+                for (var i =0; i< obj.filho.length; i++) {
+                    obj.filho[i] = checksSelecteds(selecteds, obj.filho[i]);
+                }
+            }
+        }
+        return obj;
+    };
+
 
     //
     //
@@ -512,6 +585,8 @@ var TreeCreate = function() {
         createButton: createButton,
         calculoElementos: calculoElementos,
         tamanhoContent: getTamanhoContent,
+        load: load,
+        remove: remove,
         refreshTree: refreshTree
     };
 

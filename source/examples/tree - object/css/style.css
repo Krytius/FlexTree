@@ -1,5 +1,11 @@
 #tree {
     height: 630px;
-    width: 700px;
+    width: 330px;
+    float: left;
+}
+
+#tree2 {
+    height: 630px;
+    width: 330px;
     float: left;
 }

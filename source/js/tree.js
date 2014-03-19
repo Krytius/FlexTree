@@ -105,6 +105,10 @@ var Tree = function(elem) {
         dimensionElement = val;
         return;
     };
+    
+    var getElement = function() {
+        return element;
+    };
 
     //	
     //	
@@ -196,13 +200,14 @@ var Tree = function(elem) {
         };
 
         initModules();
+        treeCreate.load(element);
 
         if (title) {
             var documentTitle = createTitle();
             
             if(filter) {
                 var documentFilter = treeFilter.createFilter();
-                documentTitle.appendChild(documentFilter)
+                documentTitle.appendChild(documentFilter);
             }
             
             element.appendChild(documentTitle);
@@ -220,7 +225,8 @@ var Tree = function(elem) {
             var documentButton = createButton();
             element.appendChild(documentButton);
         }
-
+        
+        treeCreate.remove(element);
     };
 
     //
@@ -375,6 +381,7 @@ var Tree = function(elem) {
         init: init,
         refresh: treeCreate.refreshTree,
         // Getters Setters
+        getElement: getElement,
         getObject: getObject,
         getTitle: getTitle,
         setTitle: setTitle,

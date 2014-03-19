@@ -136,11 +136,9 @@ var TreeEvents = function() {
 
         // Marcar Pai
         marcarPai(grupo, object.getObject());
-
         if (onCheckEvent) {
             onCheckEvent(id, mark, checksSelect, treeRetorno(grupo, id));
         }
-
     };
 
     /**
@@ -195,7 +193,7 @@ var TreeEvents = function() {
             checksSelect.push(id);
         }
     };
-    
+
     /**
      * Funçãp que marca o checkbox do pai caso um filho for marcado
      * @param {integer} grupo
@@ -211,26 +209,28 @@ var TreeEvents = function() {
         var elementPai = object.selector('#mw-content-tree[group-id="' + pai.id + '"] div.mw-topic div#mw-check');
         var contador = 0;
         for (var i = 0; i < quantFilhos; i++) {
-            if(!elementPai.length){
+            if (!elementPai.length) {
                 elementPai = [elementPai];
             }
-            
+
             if (elementPai[i].className === "checkActive") {
                 contador++;
             }
         }
-        
-        var element = object.selector('.mw-topic[data-id="' + pai.id + '"] #mw-check');
-        if (contador === quantFilhos) {
-            element.className = 'checkActive';
-        } else if (contador === 0) {
-            element.className = 'checkInative';
-        } else {
-            element.className = 'checkMediate';
+
+        if (object.selector('.mw-topic[data-id="' + pai.id + '"] #mw-check')) {
+            var element = object.selector('.mw-topic[data-id="' + pai.id + '"] #mw-check');
+            if (contador === quantFilhos) {
+                element.className = 'checkActive';
+            } else if (contador === 0) {
+                element.className = 'checkInative';
+            } else {
+                element.className = 'checkMediate';
+            }
         }
 
     };
-    
+
     /**
      * Função que retorna para o usuário os callback dos botões
      * @param {DON} element
@@ -266,12 +266,13 @@ var TreeEvents = function() {
     };
 
     var treeRetorno = function(grupo, id) {
+        
         var tree = [];
         var pai = object.treeCreate.returnTreeUp(object.getObject(), grupo);
-        
+
         tree.push(object.treeCreate.returnTreePosition(object.getObject(), id));
-        
-        while(pai) {
+
+        while (pai) {
             tree.push(pai);
             pai = object.treeCreate.returnTreeUp(object.getObject(), pai.idGroup);
         }
