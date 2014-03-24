@@ -190,9 +190,9 @@ var TreeCreate = function() {
      * @param  {object}     obj
      * @return {void}
      */
-    var createTree = function(obj) {
+    var createTree = function(obj, callback) {
         var quant = obj.length;
-
+        
         var div = object.create('div');
         div.setAttribute('id', 'mw-content-tree');
 
@@ -290,6 +290,11 @@ var TreeCreate = function() {
                 tamanhoContent = tamanhoCont;
             }
         }
+        
+        if(callback) {
+            callback();
+        }
+        
         return div;
     };
 
@@ -411,7 +416,11 @@ var TreeCreate = function() {
         div.appendChild(div2);
         element.appendChild(div);
     };
-
+    
+    /**
+     * Função que remove da tela o elemento de carregando
+     * @param {DON} element
+     */
     var remove = function(element) {
         var ele = object.selector('#' + element.id + ' .mw-carregando');
         element.removeChild(ele);

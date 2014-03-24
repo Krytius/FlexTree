@@ -87,25 +87,25 @@ var Tree = function(elem) {
     var getButons = function(val) {
         return button;
     };
-    
+
     var setFilter = function(val) {
         filter = val;
         return;
     };
-    
+
     var getFilter = function() {
         return filter;
     };
-    
+
     var getDimension = function() {
-        return dimensionElement; 
+        return dimensionElement;
     };
-    
+
     var setDimension = function(val) {
         dimensionElement = val;
         return;
     };
-    
+
     var getElement = function() {
         return element;
     };
@@ -128,7 +128,7 @@ var Tree = function(elem) {
         }
 
         object = json;
-
+        
         start();
         return;
     };
@@ -200,16 +200,16 @@ var Tree = function(elem) {
         };
 
         initModules();
-        treeCreate.load(element);
+        treeCreate.load(getElement());
 
         if (title) {
             var documentTitle = createTitle();
-            
-            if(filter) {
+
+            if (filter) {
                 var documentFilter = treeFilter.createFilter();
                 documentTitle.appendChild(documentFilter);
             }
-            
+
             element.appendChild(documentTitle);
         }
 
@@ -225,8 +225,6 @@ var Tree = function(elem) {
             var documentButton = createButton();
             element.appendChild(documentButton);
         }
-        
-        treeCreate.remove(element);
     };
 
     //
@@ -284,8 +282,13 @@ var Tree = function(elem) {
     var createContent = function() {
         var div = create('div');
         div.className = 'mw-tree-view';
+        
         div.style.height = treeCreate.calculoElementos() + 'px';
-        var elementTree = treeCreate.createTree(object);
+        var elementTree = treeCreate.createTree(object, function() {
+            setTimeout(function() {
+                treeCreate.remove(getElement());
+            }, 1000);
+        });
         div.appendChild(elementTree);
         return div;
     };
