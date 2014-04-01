@@ -400,6 +400,7 @@ var Tree = function(elem) {
         getFilter: getFilter,
         getDimension: getDimension,
         setDimension: setDimension,
+        getSelected: treeEvents.getSelected,
         // Manipuladores de DON
         create: create,
         selector: selector,

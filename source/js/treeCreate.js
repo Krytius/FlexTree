@@ -254,7 +254,9 @@ var TreeCreate = function() {
                 
                 if(obj[i].check) {
                     check.className = "checkActive";
-                    object.treeEvents.setSelected(object.treeEvents.getSelected().push(obj[i].id));
+                    var selecionados = object.treeEvents.getSelected();
+                    selecionados.push(obj[i].id);
+                    object.treeEvents.setSelected(selecionados);
                 } else {
                     check.className = "checkInative";
                 }
@@ -521,7 +523,9 @@ var TreeCreate = function() {
                 
                 if(obj[i].check) {
                     check.className = "checkActive";
-                    object.treeEvents.setSelected(object.treeEvents.getSelected().push(obj[i].id));
+                    var selecionados = object.treeEvents.getSelected();
+                    selecionados.push(obj[i].id);
+                    object.treeEvents.setSelected(selecionados);
                 } else {
                     check.className = "checkInative";
                 }
