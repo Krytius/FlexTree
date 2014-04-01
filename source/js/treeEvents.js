@@ -195,7 +195,7 @@ var TreeEvents = function() {
     };
 
     /**
-     * Funçãp que marca o checkbox do pai caso um filho for marcado
+     * Função que marca o checkbox do pai caso um filho for marcado
      * @param {integer} grupo
      * @param {Object} obj
      * @return {void}
@@ -209,6 +209,9 @@ var TreeEvents = function() {
         var elementPai = object.selector('#mw-content-tree[group-id="' + pai.id + '"] div.mw-topic div#mw-check');
         var contador = 0;
         for (var i = 0; i < quantFilhos; i++) {
+            if(!elementPai)
+                continue;
+                
             if (!elementPai.length) {
                 elementPai = [elementPai];
             }
@@ -264,7 +267,15 @@ var TreeEvents = function() {
                 break;
         }
     };
-
+    
+    /**
+     * Função que informa árvore a ser retornada para o 
+     * calback do click do usuário.
+     * 
+     * @param {type} grupo
+     * @param {type} id
+     * @returns {Array|TreeEvents.treeRetorno.tree}
+     */
     var treeRetorno = function(grupo, id) {
         
         var tree = [];

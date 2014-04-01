@@ -6,6 +6,7 @@ var TreeFilter = function() {
     //
 
     var object = {};
+    var ids = [];
 
     //
     //
@@ -29,12 +30,24 @@ var TreeFilter = function() {
     //
     //
 
-    var ids = [];
+    
+    /**
+     * Executa o procedimento de busca
+     * @param {events} e
+     * @returns {void}
+     */
     var filterObject = function(e) {
         ids = [];
         search(this.value.toLowerCase(), object.getObject(), retornoFiltro);
     };
-
+    
+    /**
+     * Executa filtro nas palavras que contém no objeto
+     * @param {String} val
+     * @param {Object} objeto
+     * @param {Function} callback
+     * @returns {void}
+     */
     var search = function(val, objeto, callback) {
 
         var quant = objeto.length;
@@ -53,7 +66,12 @@ var TreeFilter = function() {
             callback(ids);
         return;
     };
-
+    
+    /**
+     * Retorno do filtro e apresentação do mesmo no layout
+     * @param {Array} ids
+     * @returns {void}
+     */
     var retornoFiltro = function(ids) {
         var objectFiltro = [];
         for (var i = 0; i < ids.length; i++) {

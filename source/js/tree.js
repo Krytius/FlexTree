@@ -282,8 +282,8 @@ var Tree = function(elem) {
     var createContent = function() {
         var div = create('div');
         div.className = 'mw-tree-view';
-        
         div.style.height = treeCreate.calculoElementos() + 'px';
+        
         var elementTree = treeCreate.createTree(object, function() {
             setTimeout(function() {
                 treeCreate.remove(getElement());

@@ -30,7 +30,7 @@ var TreeCreate = function() {
     //  Informações
     //
     //
-
+    
     var getTamanhoContent = function() {
         return tamanhoContent;
     };
@@ -128,7 +128,13 @@ var TreeCreate = function() {
         }
 
     };
-
+    
+    /**
+     * Retorna arvore de determinado lugar a seus filho e netos
+     * @param {Object} obj
+     * @param {Interger} id
+     * @returns {TreeCreate.returnTreePositionDown.obj}
+     */
     var returnTreePositionDown = function(obj, id) {
         var quant = obj.length;
 
@@ -187,8 +193,9 @@ var TreeCreate = function() {
 
     /**
      * Método que cria a estrutura da tree view
-     * @param  {object}     obj
-     * @return {void}
+     * @param   {object}     obj
+     * @param   {Function} callback
+     * @return  {void}
      */
     var createTree = function(obj, callback) {
         var quant = obj.length;
@@ -244,7 +251,14 @@ var TreeCreate = function() {
             // CheckBox
             if (object.getCheck()) {
                 var check = object.create('div');
-                check.className = (obj[i].check) ? "checkActive" : "checkInative";
+                
+                if(obj[i].check) {
+                    check.className = "checkActive";
+                    object.treeEvents.setSelected(object.treeEvents.getSelected().push(obj[i].id));
+                } else {
+                    check.className = "checkInative";
+                }
+                
                 check.setAttribute('id', 'mw-check');
 
                 check.onclick = object.treeEvents.markDesmarkCheck;
@@ -420,6 +434,7 @@ var TreeCreate = function() {
     /**
      * Função que remove da tela o elemento de carregando
      * @param {DON} element
+     * @return {void}
      */
     var remove = function(element) {
         var ele = object.selector('#' + element.id + ' .mw-carregando');
@@ -503,7 +518,14 @@ var TreeCreate = function() {
             // CheckBox
             if (object.getCheck()) {
                 var check = object.create('div');
-                check.className = (obj[i].check) ? "checkActive" : "checkInative";
+                
+                if(obj[i].check) {
+                    check.className = "checkActive";
+                    object.treeEvents.setSelected(object.treeEvents.getSelected().push(obj[i].id));
+                } else {
+                    check.className = "checkInative";
+                }
+                
                 check.setAttribute('id', 'mw-check');
 
                 check.onclick = object.treeEvents.markDesmarkCheck;
@@ -584,6 +606,7 @@ var TreeCreate = function() {
     //	Objeto de Retorno
     //
     //
+    
     var retorno = {
         init: init,
         createTree: createTree,
